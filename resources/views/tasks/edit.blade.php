@@ -4,24 +4,23 @@
 
     <h1>id: {{ $task->id }} のタスク編集ページ</h1>
 
-     @if (count($errors) > 0)
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
-    
-    {!! Form::model($task, ['route' => ['tasks.update', $task->id], 'method' => 'put']) !!}
-
-        {!! Form::label('content', 'タスク:') !!}
-        {!! Form::text('content') !!}
+    <div class="row">
+        <div class="col-xs-12 col-sm-8-offset-2 col-md-offset-8-2 col-lg-6-offset-3">
+     
+     
+     {!! Form::model($task, ['route' => ['tasks.update', $task->id], 'method' => 'put']) !!}
+                <div class="form-group">
+                    {!! Form::label('content', 'タスク:') !!}
+                    {!! Form::text('content', null, ['class' => 'form-control']) !!}
+                </div>
         
-        {!! Form::label('status', 'ステイタス:') !!}
-        {!! Form::text('status') !!}
-
-        {!! Form::submit('更新') !!}
-
-    {!! Form::close() !!}
+                <div class="form-group">
+                    {!! Form::label('status', 'ステータス:') !!}
+                    {!! Form::text('status', null, ['class' => 'form-control']) !!}
+                </div>
+        
+                {!! Form::submit('更新', ['class' => 'btn btn-default']) !!}
+        
+            {!! Form::close() !!}
 
 @endsection
