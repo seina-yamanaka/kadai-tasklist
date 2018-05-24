@@ -13,10 +13,8 @@ class CreateKadaiTasklist extends Migration
      */
     public function up()
     {
-         Schema::create('tasks', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('content');
-            $table->timestamps();
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->string('status', 10);
         });
     }
 
@@ -27,6 +25,6 @@ class CreateKadaiTasklist extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
+        
     }
 }
