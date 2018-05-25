@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKadaiTasklist extends Migration
+class CreateTasksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateKadaiTasklist extends Migration
      */
     public function up()
     {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->string('status', 10);
+        Schema::create('tasks', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
+            $table->string('content');
+            $table->string('status',10);
         });
     }
 
@@ -25,6 +28,6 @@ class CreateKadaiTasklist extends Migration
      */
     public function down()
     {
-        
+        Schema::dropIfExists('tasks');
     }
 }
